@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Gráfico de Horas</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css"/>	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/animated.js"></script>
+	<script type="text/javascript" src="js/firebase.js"></script>
+	<script type="text/javascript" src="js/grafico.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>
+</head>
+
+<body class="animated fadeinDown">
+	<!-- Div geral que inclue todas as divs -->
+	<div id="container">	
+		<div id="topo">
+			<img id="logo" src="imagens/logo.png" />
+		</div>
+		<!-- Início da div da coluna esquerda-->
+		<div id="colunaEsquerda">
+			<!--<header>
+				<label id="dataGrafico" for="Data">
+				De:
+				<input type="date" name="data" min="2014-08-01" max="2015-12-31">		
+				</label>
+				
+				<br>
+				
+				<label id="dataGrafico" for="Data">
+				Para:
+				<input type="date" name="data" min="2014-08-01" max="2015-12-31">		
+				</label>
+			</header>-->
+
+			<!-- Nome do projeto -->
+			
+			<div id="idColaboradores" class="checkbox">
+				<h5 id="titulo">PROJETO</h5>
+				<select id="idProjeto" required="true" name="idProjeto">
+						<!-- Chame aqui os projetos pelo BD-->
+				</select>
+
+				<h5 id="titulo">COLABORADORES</h5>
+				<form action="">
+					<!--<input type="checkbox" name="Colaboradores" value="Cléu Mendes de Sá">
+					<label>Cléu Mendes de Sá</label>-->
+					
+				</form>
+			</div>
+
+			<footer>
+				<p>
+					
+					<input id="btnVoltarGerarGrafico" class="botao" type="button" value="Voltar" />
+				</p>
+			</footer>
+		</div>
+		<!-- Fim da div da coluna esquerda-->
+
+		<!-- Início da div da coluna direita-->
+		<div id="colunaDireita">
+			<header>
+				<h1>Gráfico de Horas</h1>
+			</header>
+
+			<div id="listAnos"><!-- links para os anos existentes no banco de dados--></div>
+
+
+			<!-- Div para o Gráfico-->
+			<div id="grafico" style="height:1000px">
+				<div id="containerGrafico"></div>
+			</div>
+			<!-- Fim da div para o Gráfico-->
+		</div>
+		<!-- Fim da div da coluna esquerda-->
+
+	</div>
+	<!-- fim da div geral que inclue todas as divs -->
+</body>
+</html>

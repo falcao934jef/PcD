@@ -1,0 +1,202 @@
+
+body{
+	background-image:url(../imagens/bg-top.png);
+	background-size: 100%;
+	background-color: #F7F7F7;
+	background-repeat: repeat-x;
+	font-family: "Trebuchet MS";
+	font-size: 15px;
+}
+
+#listAnos a{
+	padding: 10px;
+	background-color: #FFA834;
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+	margin: 5px
+}
+
+ #listAnos a:hover{
+ 	background: #F9CA78;
+ }
+
+#listAnos a.active{
+	background: #eaeaea;
+}
+
+#container{
+	margin:0 auto;
+	width: 1000px;
+	background-color: #f7f7f7;
+}
+
+#container #form{
+	margin:0 auto;
+	width: 1000px;
+	background-color: #f7f7f7;
+	border: solid 1px;
+}
+
+/*Estilo do topo do site*/
+#topo{
+	width: 960px;
+	height: 125px;
+	text-align: center;
+}
+
+#topo #logo{
+	margin: 40px auto;
+	padding:10px auto;
+	display: block;
+}
+/*Fim do estilo do topo do site*/
+
+/*Estilo dos inputs do site*/
+.idData{
+	float: right;
+	margin-top: -22px;
+    margin-right: 177px;
+}
+.checkBox{
+	float: right;
+	margin-top: -95px;
+	margin-right: 178px;
+	display: none;
+}
+.idsColaboradores{/* */
+	float: right;
+	margin-top: 20px;
+	margin-right: 534px;
+}
+.saldoMesAnterior{/**/
+	float: right;
+	margin-top: -20px;
+    margin-right: 567px;
+}
+.saldoHorasMesAtual{/**/
+	float: right;
+	margin-top: -5px;
+	margin-right: 569px;
+}
+.saldoFinalHoras{/**/
+	float: right;
+	margin-top: -5px;
+	margin-right: 569px;
+}
+.quantidadeDeHoras{/**/
+	float: right;
+	margin-top: -77px;
+	margin-right: 175px;
+	display: none;
+}
+/*Fim do estilo dos inputs do site*/
+
+/*Estilo do form*/
+form {
+	width: 1000px;
+}
+fieldset{
+	height: 300px;
+	padding-top: 40px;
+	border: 0px;
+}
+form p {
+    text-align: center;
+}
+form input[type=number] {
+	width: 40px;
+}
+form p .botao{
+  border:solid #ffa834;
+  border-radius: 5px;
+  background-color:#FFA834;
+  margin-left: 10px;
+  height: 30px;
+  font-size: 15px;
+}
+p{
+	margin-top: 60px;
+	margin-bottom: 10px;
+}
+/*Fim do estilo do form*/
+
+/*Estilos da página de gráfico*/
+	#dataGrafico{
+		padding: 0px 40px 0px 0px;
+		float: right;
+	}
+	#dataGrafico input{
+		margin: 18px 0px 0px 0px;
+	}
+
+	/*Estilo da coluna esquerda*/
+	#titulo {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	#colunaEsquerda {
+		width: 25%;
+		height: 640px;
+		float: left;
+		border: solid 1px gray;
+	}
+
+	#colunaEsquerda select {
+		width: 150px;
+		text-align: center;
+		margin-left: 50px;
+	}
+
+	#colunaEsquerda footer p input{
+		border:solid #ffa834;
+		border-radius: 5px;
+		background-color:#FFA834;
+		margin-left: 10px;
+		height: 30px;
+		font-size: 15px;
+		text-align: center;
+	}
+	#colunaEsquerda header{
+		height: 100px;
+	}
+	#colunaEsquerda #idColaboradores {
+		height: 500px;
+	}
+	#colunaEsquerda #idColaboradores form{
+		padding: 0px 5px 0px 10px;
+	}
+	#colunaEsquerda footer{
+		height: 20px;
+	}
+	#colunaEsquerda footer p {
+		text-align: center;
+	}
+	/*Fim do estilo da coluna esquerda*/
+
+	/*Estilo da coluna direita*/
+	#colunaDireita {
+		width: 74%;
+		height: 640px;
+		float: left;
+		border-left: solid 0px;
+		border-right: solid 1px gray;
+		border-bottom: solid 1px gray;
+		border-top: solid 1px gray;
+	}
+	#colunaDireita header{
+		height: 60px;
+		border-bottom: solid 1px  gray;
+		text-align: center;
+		margin-bottom: 18px;
+	}
+	#colunaDireita header h1{
+		text-align: center;
+		font-family: Arial;
+	}
+	#colunaDireita #grafico{
+		height: 500px;
+	}
+	/*fim do estilo da coluna direita*/
+
+/*Fim do estilo da página de gráfico*/
