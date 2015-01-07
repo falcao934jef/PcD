@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>Gráfico de Horas</title>
+	<title>.::Banco de Horas::.</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css" />
 	<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -17,73 +17,73 @@
 			<div id="topo">
 				<img id="logo" src="imagens/logo.png" />
 			</div>
+			<div id="menu">
+				<a class="idprincipalMenu" class="active" href="#"> PRINCIPAL </a> 
+				<a class="idcolaboradoresMenu" href="#"> COLABORADORES </a> 
+				<a class="idgraficoMenu" href="#"> GRÁFICO </a>
+			</div>
 
 			<!-- Início do form-->
 			<form action="" method="post" name="form" id="form">
 				<!-- Fieldset é a div geral com todos os inputs -->
 				<fieldset> 
-					<!-- Input colaborador -->
-					<label class="idsColaboradores" for="colaborador">Colaborador:
-					<select id="idColaboradores" required="true" name="idColaborador">
-	             <option value="">Selecione um colaborador</option>
-	             <!--<option value="Cléu Mendes de Sá" data-horas="30">Clodovildo</option>-->
-           </select>
-					</label>
+				<div class="formLeft">
 
-					<br><br>
-
-					<!-- Input data -->
-					<label class="idData" for="Data">Data:
-						<input id="calendar" required='true' type="date" name="data" min="2014-08-01" max="2015-01-01" disabled="disabled"><br>
-					</label>
-
-					<br><br>
-
-					<!-- Input Saldo mês anterior -->
-					<label class="saldoMesAnterior saldo_mes_anterior" for="saldo_mes_anterior">Saldo Mês Anterior:
-						<span class="sinal" id="sinalAnterior"> </span>
-						<input type="number" min="0" required="true" id="saldoMesAnteriorHora" readonly value="" class="hora"/> :
-						<input type="number" min="0" max="59" value="" required="true" size="4" id="saldoMesAnteriorMin" readonly class="minuto"/>
-					</label>
-
+					<div id="selecionarProjeto">
+						<!-- Nome do projeto -->
+						<label class="idsProjeto" for="colaborador">Nome do Projeto:</label>
+						<select id="idProjeto" required="true" name="idProjeto"></select>
+					</div>
 					<br>
+		           		<div id="colaboradorProjeto">
+							<!-- Input do Nome do Colaborador -->
+							<label class="nomeDoColaboraddor" for="nome_do_colaborador">Nome do Colaborador:</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Bruno Lírio Alves">
+							<label>Bruno Xueira</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Rafael Dias Scarpille">
+							<label>Rafael Dias Scarpille</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cristiano de Oliveira Santos">
+							<label>Cristiano Greg</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Marcos Paulo Ferreira da Silva">
+							<label>Marcos Pato Maloqueiro</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Ronaldo Bernardi Solarevisk">
+							<label>Ronaldo Batatão</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Halef Barbosa Soares">
+							<label>Halef Cheiroso</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Nebo Francisco da Silva">
+							<label>Nebuloso Chico</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Jefferson Douglas Dias Falcão">
+							<label>Jefferson Crís</label>
+							<br>
+						</div>
+				</div>
 
-					<!-- Input Saldo de horas do mês atual -->
-					<label class="saldoHorasMesAtual saldo_mes_atual" for="saldo_de_horas_do_mes_atual">Saldo de horas do mês atual:
-						
-						<span class="sinal" id="sinalAtual">+</span>
-						<input min="0" type="number" name="saldoHoras" required="true" id="saldoMesAtualHora" class="hora"/> : 
-						<input type="number" min="0" max="59" name="saldoMinutos" required="true" id="saldoMesAtualMin" class="minuto"/>
-					</label>
+				<div class="projetoLadoDireito">	
+				
+				<!-- Input Checkbox para novo Projeto -->
+				<label  class="checkBox" for="novo_projeto"></label>
+				<input type="checkbox" name="Projeto" value="Novo Projeto">
+				<label>Novo Projeto</label>
+				
+				</div>
 
-					<br><br>
-
-					<!-- Input Saldo final de horas -->
-					<label class="saldoFinalHoras" for="saldo_final_de_horas">Saldo final de horas:
-						<input name="total" type="text" id="total"  size="10" maxlength="10" readonly>
-					</label>
-
-					<br><br>
-
-					<!-- Input Checkbox com pagamento -->
-					<label  class="checkBox" for="com_pagamento">
-						<input type="checkbox" id="checkBoxPagamento" class="comPagamento" name="opcao" value="op1"> Com pagamento?
-					</label>
-
-					<br><br>
-
-					<!-- Input "opcional" de Quantidade de horas -->
-					<label  class="quantidadeDeHoras quantidade_de_horas" for="quantidade_de_horas">Quantidade de Horas:
-						<input type="number" value="0" min="0" id="qntHorasHora" class="hora" name="qtsHorasHora"/> :
-						<input type="number" value="0" min="0" max="59" id="qntHorasMin" class="minuto" name="qtsHorasMinuto"/> 
-					</label>
-
+				<label  class="nomeProjeto" for="nome_Projeto">Nome do Projeto:
+				<input type="text"  id="N_Projeto" name="NProjeto"/>  
+				</label>
 					<!-- Botões da página -->
-					<p>
-						<input id="enviar" class="botao" type="submit" value="Enviar"> 
-						<input id="limpar" class="limpar botao" type="reset" value="Limpar">
-						<input id="btnGerarGrafico" class="botao" type="button" value="Gráfico" />
-						<input id="btnNovoColaborador" class="botao" type="button" value="Novo colaborador" />
+					<p class="botaoIndex">
+						<input id="limpar" class="limpar botao" type="reset" value="excluir">
 					</p> 
 				</fieldset>
 			</form>
