@@ -14,7 +14,7 @@ window.onload = function(){
 	
 
 	$('#form').submit(function(event){
-		
+	event.preventDefault();	
 
 		console.log ($(this).serialize());
 		var dadosFormulario = $(this).serializeArray();
@@ -33,8 +33,8 @@ window.onload = function(){
 
 		if (isNegativo(saldoFinal)){
 
-			alert("Não é possível realizar o pagamento, devido as horas ser negativas!");
-			event.preventDefault();
+			alert("Não é possível realizar o pagamento, devido as horas serem negativas!");
+			
 		}else{
 
 			atualizaDadosPorColaborador(arrayFormulario.idColaborador, dataSemDia(arrayFormulario.data),
@@ -493,39 +493,18 @@ window.onload = function(){
 			* caso contrário imprime na tela o valor normal
 			*/
 			if(minMes <10){
-				menorMes = minAno + "-" + "0"+ 1 + "-" + "10";
+				menorMes = minAno + "-" + "0"+ 1 + "-" + "01";
 			}else{
-				menorMes = minAno + "-" +minMes + "-" + "10";
+				menorMes = minAno + "-" +minMes + "-" + "01";
 			}
 
 			// Irá verificar qual o menor mês e ano do funcionário e irá bloquear a datas anteriores
-			$("#calendar").prop("min", menorMes);
+			$("#calendar").datepicker("option", "minDate", menorMes);
 			$("#calendar").prop("disabled", false);	
 
 		}); // Fim dbworkTime.on('value', function(workTime)
 		
 	}); // Fim $('#idColaboradores').on('change', function()
-
-	
-	// Função irá verificar qual será a data atual para ser a data limite no calendário
-	function dataMax(){
-
-		// Armaneza uma nova data para a variável dataMax
-		var dataMax = new Date();
-		/* Armaneza o mes atual na variável month o +1 serve para adicionar uma posição, 
-		* pois sempre inicializa com o "0".
-		*/
-		var month = dataMax.getUTCMonth() + 1; //months from 1-12
-		// Armaneza o dia atual para a variável day e adiciona mais dois dias para bloquear o calendário
-		var day = dataMax.getUTCDate()+2;
-		// Armaneza o ano atual para a variável year 
-		var year = dataMax.getUTCFullYear();
-		// Irá apresentar a data na variável fullDate no modelo "2000-01-01"
-		var fullDate = year + "-" + month + "-" + day;
-
-		// Irá bloquear o calendário conforme a data armazenada no fullDate
-		$("#calendar").prop("max", fullDate);
-	}
 	
 	// Limpa o formulário e desabilita o checkBox
 	function resetFormulario(){
@@ -765,11 +744,8 @@ window.onload = function(){
 		}
 
 	}
-};
-
-	$(function() {
-	    $("#calendar").datepicker({
-	        dateFormat: 'dd/mm/yy',
+    $("#calendar").datepicker({
+	        dateFormat: 'yy-mm-dd',
 	        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
 	        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
 	        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
@@ -777,7 +753,12 @@ window.onload = function(){
 	        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
 		   		
 	        changeMonth: true,
-	        changeYear: true
+	        changeYear: true,
 		    
+		    maxDate: 'now'
 		});
-	});
+};
+
+
+
+	

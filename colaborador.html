@@ -13,15 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.structure.min.css">
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.theme.min.css">
 
-	<script>
-		$(function() {
-			$( "#calendar" ).datepicker();
-			$( "#format" ).change(function() {
-				$( "#calendar" ).datepicker( "option", "dateFormat", $( this ).val() );
-			});
-		});
-	</script>
-
 </head>
 
 <body>
@@ -55,15 +46,8 @@
 
 					<!-- Input data -->
 					<label class="idData" for="Data">Data:
-						<input id="calendar" required='true' type="text" name="data" min="2014-08-01" max="2015-01-01" disabled="disabled"><br>						
+						<input id="calendar" required='true' type="text" name="data" min="1950-01-01" max="2050-01-01" disabled="disabled"><br>						
 					</label>
-
-					<p>Formato de Data:<br>
-						<select id="format">
-						    <option value="yy-mm-dd">AAAA-MM-DD </option>
-						    <option value="Vazio">Vazio</option>						
-						</select>
-					</p>
 
 					<br><br>
 
