@@ -24,6 +24,7 @@ window.addEventListener("load", function(){
 		  	for (var i in person){
 
 		  		if(listaDeProjeto.indexOf(person[i].project) < 0){
+		  			
 		  			$("#idProjeto").append("<option value='"+i+"'>" +person[i].project+"</option>");
 		  			listaDeProjeto.push(person[i].project);
 
