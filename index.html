@@ -12,7 +12,6 @@
 	<script type="text/javascript" src="js/jquery_ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.structure.min.css">
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.theme.min.css">
-
 </head>
 
 <body>
@@ -36,12 +35,12 @@
 					<div id="selecionarProjeto">
 						<!-- Nome do projeto -->
 						<label class="idsProjeto" for="colaborador">Nome do Projeto:</label>
-						<select id="idProjeto" required="true" name="idProjeto"></select>
+						<select id="idProjeto" name="idProjeto"></select>
 					</div>
 					<br>
 		           		<div id="colaboradorProjeto">
 							<!-- Input do Nome do Colaborador -->
-							<label class="nomeDoColaboraddor" for="nome_do_colaborador">Nome do Colaborador:</label>
+							<label class="nomeDoColaborador" for="nome_do_colaborador">Nome do Colaborador:</label>
 							<br>
 							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
 							<label>Cléu Mendes de Sá</label>
@@ -76,18 +75,25 @@
 				<div class="projetoLadoDireito">	
 				
 				<!-- Input Checkbox para novo Projeto -->
-				<label  class="checkBox" for="novo_projeto"></label>
-				<input type="checkbox" name="Projeto" value="Novo Projeto">
-				<label>Novo Projeto</label>
-				
-				</div>
+				<label  class="checkBoxColaborador" for="novo_colaborador"></label>
+				<input type="radio" name="opcao" value="Opc1">
+				<label>Novo Colaborador</label>
 
-				<label  class="nomeProjeto" for="nome_Projeto">Nome do Projeto:
+				<label  class="checkBox" for="novo_projeto"></label>
+				<input type="radio" name="opcao" value="Opc2">
+				<label>Novo Projeto</label>
+
+				</div>
+				
+				<label  class="nomeProjeto" for="nome_Projeto">Novo Cadastro:
 				<input type="text"  id="N_Projeto" name="NProjeto"/>  
 				</label>
+
+				<input id="salvarCadastro" class="salvarNovoCadastro" type="submit" value="Salvar">
+
 					<!-- Botões da página -->
 					<p class="botaoIndex">
-						<input id="limpar" class="limpar botao" type="reset" value="excluir">
+						<input id="limpar" class="limpar botao" type="reset" value="Excluir">
 					</p> 
 				</fieldset>
 			</form>

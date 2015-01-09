@@ -239,13 +239,24 @@ p{
 .projetoLadoDireito{
 	float: right;
 	margin-top: -224px;
-	margin-right: 174px;
+	margin-right: 137px;
+}
+.projetoLadoDireito .checkBoxColaborador{
+	float: right;
+	margin-top: -182px;
+	margin-right: 60px;
 }
 .nomeProjeto{
 	float: right;
 	margin-top: -182px;
 	margin-right: 173px;
 }
+#salvarCadastro{
+	float: right;
+	margin-top: -182px;
+	margin-right: 115px;
+}
+
 #selecionarProjeto select {
 	width: 150px;
 	text-align: center;
