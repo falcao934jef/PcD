@@ -10,9 +10,9 @@
 	<script src="js/firebase.js"></script>
 	<script type="text/javascript" src="js/colaboradores.js"></script>
 	<script type="text/javascript" src="js/jquery_ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/principal.js"></script>
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.structure.min.css">
 	<link rel="stylesheet" type="text/css" href="js/jquery_ui/jquery-ui.theme.min.css">
-	<script type="text/javascript" src="js/projeto.js"></script>
 </head>
 
 <body>
@@ -76,21 +76,25 @@
 				<div class="projetoLadoDireito">	
 				
 				<!-- Input Checkbox para novo Projeto -->
-				<label  class="checkBoxColaborador" for="novo_colaborador"></label>
-				<input type="radio" name="opcao" value="Opc1">
-				<label>Novo Colaborador</label>
-
-				<label  class="checkBox" for="novo_projeto"></label>
-				<input type="radio" name="opcao" value="Opc2">
-				<label>Novo Projeto</label>
-
+			
+				<a href="#" id="btnNovoColaborador">Novo Colaborador</a>
+				<a href="#" id="btnNovoProjeto">Novo Projeto</a>
+			
 				</div>
 				
-				<label  class="nomeProjeto" for="nome_Projeto">Novo Cadastro:
-				<input type="text"  id="N_Projeto" name="NProjeto"/>  
-				</label>
 
-				<input id="salvarCadastro" class="salvarNovoCadastro" type="submit" value="Salvar">
+				<div class="novoColaborador dialog" title="Novo colaborador">
+					<p>Insira o Colaborador</p>
+					<input type="text" name="">
+					<input type="button" value="Salvar">
+				</div>
+
+				<div class="NovoProjeto dialog" title="Novo projeto">
+					<p>Insira o Projeto</p>
+					<input type="text" name="">
+					<input type="button" value="Salvar">
+				</div>
+
 
 					<!-- Botões da página -->
 					<p class="botaoIndex">

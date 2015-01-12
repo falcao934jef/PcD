@@ -141,11 +141,11 @@ form p .botao, p .botaoIndex{
   height: 30px;
   font-size: 15px;
 }
-p{
+/*p{
 	margin-top: 60px;
 	margin-bottom: 10px;
 }
-
+*/
 .botaoIndex{
 	margin-top: 30px;
 	margin-bottom: 10px;
@@ -236,35 +236,67 @@ p{
 #colaboradorProjeto input{
 	margin-left: 160px;
 }
+/*Inicio dos botões Colaborador e Novo Projeto*/
 .projetoLadoDireito{
-	float: right;
-	margin-top: -224px;
-	margin-right: 137px;
+  float: right;
+  margin-top: -224px;
+  margin-right: 137px;
 }
-.projetoLadoDireito .checkBoxColaborador{
-	float: right;
-	margin-top: -182px;
-	margin-right: 60px;
+ div #btnNovoProjeto{
+  border:solid #FFA834;
+  border-radius: 5px;
+  background-color:#FFA834;
+  margin-left: 10px;
+  height: 30px;
+  font-size: 15px;
+  color: #000;
+  padding: 2px;
+  text-decoration: none;
 }
-.nomeProjeto{
-	float: right;
-	margin-top: -182px;
-	margin-right: 173px;
-}
-#salvarCadastro{
-	float: right;
-	margin-top: -182px;
-	margin-right: 115px;
+.novoColaborador dialog p{
+	margin-top: 23px;
+	margin-bottom: 0px;
+
 }
 
+div #btnNovoColaborador{
+  border:solid #FFA834;
+  border-radius: 5px;
+  background-color:#FFA834;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
+  color: #000;
+  padding: 2px;
+  text-decoration: none;
+
+}
+
+
+/*Fim dos botões Colaborador e Novo Projeto*/
+
+.nomeProjeto{
+  float: right;
+  margin-top: -182px;
+  margin-right: 173px;
+}
+/*#salvarCadastro{
+  float: right;
+  margin-top: -182px;
+  margin-right: 115px;
+}
+*/
 #selecionarProjeto select {
-	width: 150px;
-	text-align: center;
+  width: 150px;
+  text-align: center;
 }
 #selecionarProjeto{
-	margin-left: 70px;
+  margin-left: 70px;
 }
 #colaboradorProjeto {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 /*Fim do estilo da página de cadastro de projeto*/
+
+
+
