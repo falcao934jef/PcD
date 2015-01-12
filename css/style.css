@@ -147,9 +147,10 @@ form p .botao, p .botaoIndex{
 }
 */
 .botaoIndex{
-	margin-top: 30px;
-	margin-bottom: 10px;
+  margin-top: 106px;
+  margin-bottom: 10px;
 }
+
 /*Fim do estilo do form*/
 
 /*Estilos da página de gráfico*/
@@ -238,9 +239,10 @@ form p .botao, p .botaoIndex{
 }
 /*Inicio dos botões Colaborador e Novo Projeto*/
 .projetoLadoDireito{
-  float: right;
-  margin-top: -224px;
-  margin-right: 137px;
+	 float: right;	
+	 margin-top: -164px;
+	 margin-right: 137px;
+
 }
  div #btnNovoProjeto{
   border:solid #FFA834;
