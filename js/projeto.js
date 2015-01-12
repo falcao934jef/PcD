@@ -25,7 +25,7 @@ window.addEventListener("load", function(){
 
 		  		if(listaDeProjeto.indexOf(person[i].project) < 0){
 		  			
-		  			$("#idProjeto").append("<option value='"+i+"'>" +person[i].project+"</option>");
+		  			$("#idProjeto").append("<option value='"+person[i].project+"'>" +person[i].project+"</option>");
 		  			listaDeProjeto.push(person[i].project);
 
 		 		}
@@ -68,25 +68,44 @@ window.addEventListener("load", function(){
 		}else{
 			chart.xAxis[0].update({categories:arrayColaboradores},true);
 		}
-
 	}
 
 	$("#idProjeto").on('change', function(){
 
 		dados.on("value", function(dadosBanco) {
 
-			var idProjeto = $('#idProjeto').val();
+			var todosColaboradores = dadosBanco.val();
+
+			limpaListaDeColaboradores(); 
+
+			var projetoSelecionado = $('#idProjeto').val();
 			
+			for (var index in todosColaboradores){
 
-			for (var index in idProjeto){
-				console.log(idProjeto);
+				if((todosColaboradores[index].project == projetoSelecionado) || projetoSelecionado == '') {
+					adicionaColaboradorNaLista(index, todosColaboradores[index].name);
+				}
 
+				console.log(projetoSelecionado);
+	
 			}
+		
 
-			//var cadaProjeto = dados.child(idColaborador).child('project');
 
-			
-	})
-
+		});
 	});
+
+	function adicionaColaboradorNaLista(idColaborador, nomeColaborador){
+		var input = '<input type="checkbox" name="Colaboradores" value="'+idColaborador+'"  data-nome="'+nomeColaborador+'"/>';
+		var label = '<label>'+nomeColaborador+'</label><br>';
+
+	 	$('#idColaboradores form').append(input+label);
+	 	
+
+	}
+
+	function limpaListaDeColaboradores(){
+		$('#idColaboradores form').html('');
+	}
+
 });
