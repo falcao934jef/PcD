@@ -73,5 +73,20 @@ window.addEventListener("load", function(){
 
 	$("#idProjeto").on('change', function(){
 
+		dados.on("value", function(dadosBanco) {
+
+			var idProjeto = $('#idProjeto').val();
+			
+
+			for (var index in idProjeto){
+				console.log(idProjeto);
+
+			}
+
+			//var cadaProjeto = dados.child(idColaborador).child('project');
+
+			
+	})
+
 	});
 });
