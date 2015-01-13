@@ -123,7 +123,7 @@ form {
 	width: 1000px;
 }
 fieldset{
-	height: 300px;
+	min-height: 300px;
 	padding-top: 40px;
 	border: 0px;
 }
@@ -133,7 +133,7 @@ form p {
 form input[type=number] {
 	width: 40px;
 }
-form p .botao, p .botaoIndex{
+form p .botaoFooter, p .botaoIndex{
   border:solid #ffa834;
   border-radius: 5px;
   background-color:#FFA834;
@@ -236,11 +236,15 @@ form p .botao, p .botaoIndex{
 #colaboradorProjeto input{
 	margin-left: 160px;
 }
-/*Inicio dos botões Colaborador e Novo Projeto*/
+/*Inicio dos botões Colaborador e Novo Projeto */
+
 .projetoLadoDireito{
-  float: right;
-  margin-top: -182px;
-  margin-right: 137px;
+	position: relative;
+	float: right; 
+ 	margin-top: -11px;
+    margin-right: 91px;
+
+  
 }
  div #btnNovoProjeto{
   border:solid #FFA834;
@@ -256,7 +260,11 @@ form p .botao, p .botaoIndex{
 .novoColaborador dialog p{
 	margin-top: 23px;
 	margin-bottom: 0px;
+}
 
+.novoProjeto dialog p{
+	margin-top: 23px;
+	margin-bottom: 0px;
 }
 
 div #btnNovoColaborador{

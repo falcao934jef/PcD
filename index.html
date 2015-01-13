@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>.::Banco de Horas::.</title>
+	<title>Banco de Horas - Principal</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css" />
 	<script type="text/javascript" src="js/jquery.min.js"></script>
@@ -23,6 +23,7 @@
 			<div id="topo">
 				<img id="logo" src="imagens/logo.png" />
 			</div>
+
 			<div id="menu">
 				<a class="idprincipalMenu" class="active" href="#"> PRINCIPAL </a> 
 				<a class="idcolaboradoresMenu" href="#"> COLABORADORES </a> 
@@ -33,6 +34,8 @@
 			<form action="" method="post" name="form" id="form">
 				<!-- Fieldset é a div geral com todos os inputs -->
 				<fieldset> 
+				
+
 				<div class="formLeft">
 
 					<div id="selecionarProjeto">
@@ -41,27 +44,15 @@
 						<select id="idProjeto" name="idProjeto"></select>
 					</div>
 					<br>
-		           		<div id="colaboradorProjeto">
-							<!-- Input do Nome do Colaborador -->
-							<label id="idNomeDoColaborador" class="nomeDoColaborador" for="nome_do_colaborador">Nome do Colaborador:<br></label>
-							<br>
-							<!-- <input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>-->
-							
-						</div>
+
+						<!-- Input Checkbox para novo Projeto -->
+						
 						<div class="projetoLadoDireito">	
-				
-				<!-- Input Checkbox para novo Projeto -->
-			
 							<a href="#" id="btnNovoColaborador">Novo Colaborador</a>
 							<a href="#" id="btnNovoProjeto">Novo Projeto</a>
 			
 						</div>
-				</div>
-
-				
-				
-
+			
 				<div class="novoColaborador dialog" title="Novo colaborador">
 					<p>Insira o Colaborador</p>
 					<input type="text" name="">
@@ -75,9 +66,37 @@
 				</div>
 
 
+		           		<div id="colaboradorProjeto">
+							<!-- Input do Nome do Colaborador -->
+							<label id="idNomeDoColaborador" class="nomeDoColaborador" for="nome_do_colaborador">Nome do Colaborador:<br></label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="C    Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
+							<label>Cléu Mendes de Sá</label>
+							<br>
+						</div>
+					</div>
+
+
 					<!-- Botões da página -->
 					<p class="botaoIndex">
-						<input id="limpar" class="limpar botao" type="reset" value="Excluir">
+						<input id="limpar" class="botaoFooter" type="reset" value="Excluir">
+						<input id="mudar" class="botaoFooter" type="submit" value="Editar Projeto">
+
 					</p> 
 				</fieldset>
 			</form>
