@@ -13,7 +13,7 @@ window.onload = function(){
 	var colaboradoresSelecionadosId = [];
 	var colaboradoresSelecionadosNome = [];
 
-	dados.on("value", function(data) {
+	dados.child('users').on("value", function(data) {
 
 	  //carregando do banco de dados (Firebase) todos os dados de cada colaborador	{objeto}
 	  var person = data.val();
@@ -88,7 +88,7 @@ window.onload = function(){
 
 		var colaboradorWork;
 
-		dados.on("value", function(data) {
+		dados.child('users').on("value", function(data) {
 			var person = data.val();
 
 			//Acessando o colaborador
@@ -253,6 +253,86 @@ window.onload = function(){
 					]
 		});
 	}
-	
-	
+
+	// Mostrar a lista de projetos cadastrados do BD no HTML
+	function selecionarProjeto(){
+		dados.child("projects").on("value", function(dadosBanco) {
+		 
+			var projects = dadosBanco.val();
+			
+		  	 // Recupera o projeto no HTML
+		  	for (var i in projects){
+	  			$("#idProjeto").append("<option value='"+i+"'>" +projects[i].name+"</option>");
+		 	}
+		}); 
+	}
+	selecionarProjeto();
+
+	$("#idProjeto").on('change', function(){
+
+		var value = this.value;
+
+		dados.on("value", function(dadosBanco) {
+
+			var personProjects = dadosBanco.child('projects').val();
+			var personUsers = dadosBanco.child('users').val();
+
+			limpaListaDeColaboradores(); 
+			
+			for (var index in personUsers){
+				if((personUsers[index].project == value) || value == '') {
+					adicionaColaboradorNaLista(index, personUsers[index].name);
+				}
+			}
+
+		});
+	});
+
+	function consultarProjetoColaborador(){
+		dados.on("value", function(dadosBanco){
+
+			var personProjects = dadosBanco.child('projects').val();
+			var personUsers = dadosBanco.child('users').val();
+
+			console.log(personProjects, personUsers);
+		});
+	}
+
+	consultarProjetoColaborador();
+
+	function colaboradorPorProjeto(){
+		dados.on("value", function(dadosBanco) {
+
+		  var person = dadosBanco.val();
+		  	console.log(person);
+
+		  	for (var i in person){
+		  		/*
+			  	var colaboradorCheckbox = $('<input type="checkbox" name="Colaboradores" value="'+i+'" data-nome="'+person[i].name+'"/>');
+				$("#idColaboradores").append('<label>'+person[i].name+'</label><br>');
+				colaboradorCheckbox.on('change', onColaboradorChecked);
+				*/
+				adicionaColaboradorNaLista(i, person[i].name);
+			}
+
+		}); // Fim dados.on("value", function(dadosBanco)
+	} // Fim function popularSelect
+
+
+
+
+	function adicionaColaboradorNaLista(idColaborador, nomeColaborador){
+		
+		var input = $('<input type="checkbox" name="Colaboradores" value="'+idColaborador+'"  data-nome="'+nomeColaborador+'"/>');
+		var label = $('<label>'+nomeColaborador+'</label>');
+		input.on('change', onColaboradorChecked);
+
+	 	$('#idColaboradores form').append(input).append(label).append("<br>");
+	}
+
+	function limpaListaDeColaboradores(){
+		$('#idColaboradores form').html('');
+	}
+
+
 }
