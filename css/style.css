@@ -130,26 +130,31 @@ fieldset{
 form p {
     text-align: center;
 }
-form input[type=number] {
-	width: 40px;
-}
-form p .botaoFooter, p .botaoIndex{
+
+#limpar, #enviar{ 
   border:solid #ffa834;
   border-radius: 5px;
   background-color:#FFA834;
   margin-left: 10px;
   height: 30px;
   font-size: 15px;
+  margin-bottom: 45px;
 }
+
+form input[type=number] {
+	width: 40px;
+}
+
 /*p{
 	margin-top: 60px;
 	margin-bottom: 10px;
 }
 */
-.botaoIndex{
-	margin-top: 75px;
+.botaoIndex {
+	margin-top: 111px;
 	margin-bottom: 10px;
 }
+
 /*Fim do estilo do form*/
 
 /*Estilos da página de gráfico*/
@@ -241,21 +246,34 @@ form p .botaoFooter, p .botaoIndex{
 .projetoLadoDireito{
 	position: relative;
 	float: right; 
- 	margin-top: -11px;
+ 	margin-top: 4px;
     margin-right: 91px;
 
   
 }
- div #btnNovoProjeto{
+ div #btnNovoProjeto {
   border:solid #FFA834;
   border-radius: 5px;
   background-color:#FFA834;
   margin-left: 10px;
-  height: 30px;
+  height: 10px;
   font-size: 15px;
   color: #000;
   padding: 2px;
   text-decoration: none;
+  margin-top: 30px;
+}
+#btnMudarProjeto {
+  border:solid #FFA834;
+  border-radius: 5px;
+  background-color:#FFA834;
+  margin-left: 10px;
+  height: 10px;
+  font-size: 15px;
+  color: #000;
+  padding: 3.4px;
+  text-decoration: none;
+  margin-top: 30px;
 }
 .novoColaborador dialog p{
 	margin-top: 23px;
@@ -279,6 +297,7 @@ div #btnNovoColaborador{
   text-decoration: none;
 
 }
+
 
 
 /*Fim dos botões Colaborador e Novo Projeto*/

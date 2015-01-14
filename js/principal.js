@@ -19,4 +19,8 @@ window.onload = function(){
 	});
 
 
+	$('#btnMudarProjeto').on('click', function(){
+		$('.MudarProjeto').dialog('open');
+	});
+
 }

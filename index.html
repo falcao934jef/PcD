@@ -20,15 +20,15 @@
 <body>
 	<!-- Div geral que inclue todas as divs -->
 	<div id="container">	
-			<div id="topo">
-				<img id="logo" src="imagens/logo.png" />
-			</div>
+				<div id="topo">
+					<img id="logo" src="imagens/logo.png" />
+				</div>
 
-			<div id="menu">
-				<a class="idprincipalMenu" class="active" href="#"> PRINCIPAL </a> 
-				<a class="idcolaboradoresMenu" href="#"> COLABORADORES </a> 
-				<a class="idgraficoMenu" href="#"> GRÁFICO </a>
-			</div>
+				<div id="menu">
+					<a class="idprincipalMenu" class="active" href="#"> PRINCIPAL </a> 
+					<a class="idcolaboradoresMenu" href="#"> COLABORADORES </a> 
+					<a class="idgraficoMenu" href="#"> GRÁFICO </a>
+				</div>
 
 			<!-- Início do form-->
 			<form action="" method="post" name="form" id="form">
@@ -38,66 +38,58 @@
 
 				<div class="formLeft">
 
-					<div id="selecionarProjeto">
-						<!-- Nome do projeto -->
-						<label class="idsProjeto" for="colaborador">Nome do Projeto:</label>
-						<select id="idProjeto" name="idProjeto"></select>
-					</div>
-					<br>
+						<div id="selecionarProjeto">
+						<br>
+							<!-- Nome do projeto -->
+							<label class="idsProjeto" for="colaborador">Nome do Projeto:</label>
+							<select id="idProjeto" name="idProjeto"></select>
+						</div>
+						<br>
 
 						<!-- Input Checkbox para novo Projeto -->
 						
 						<div class="projetoLadoDireito">	
 							<a href="#" id="btnNovoColaborador">Novo Colaborador</a>
 							<a href="#" id="btnNovoProjeto">Novo Projeto</a>
-			
 						</div>
 			
-				<div class="novoColaborador dialog" title="Novo colaborador">
-					<p>Insira o Colaborador</p>
-					<input type="text" name="">
-					<input type="button" value="Salvar">
-				</div>
+						<div class="novoColaborador dialog" title="Novo colaborador">
+							<p>Insira o Colaborador</p>
+							<input type="text" name="">
+							<input type="button" value="Salvar">
+						</div>
 
-				<div class="NovoProjeto dialog" title="Novo projeto">
-					<p>Insira o Projeto</p>
-					<input type="text" name="">
-					<input type="button" value="Salvar">
-				</div>
+						<div class="NovoProjeto dialog" title="Novo projeto">
+							<p>Insira o Projeto</p>
+							<input type="text" name="">
+							<input type="button" value="Salvar">
+						</div>
+						<div class="MudarProjeto dialog" title="Mudar projeto">
+							<p>Mudar Projeto</p>
+							<select class="MProjeto" name="MProjeto">
+							<option>Cléu Mendes de Sá</option>
+							
+							</select>
+							<input type="button" value="Salvar">
+						</div>
 
 
 		           		<div id="colaboradorProjeto">
 							<!-- Input do Nome do Colaborador -->
 							<label id="idNomeDoColaborador" class="nomeDoColaborador" for="nome_do_colaborador">Nome do Colaborador:<br></label>
 							<br>
-							<input type="checkbox" name="Colaborador" value="C    Mendes de Sá">
+							<!--<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
 							<label>Cléu Mendes de Sá</label>
-							<br>
-							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>
-							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>
-							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>
-							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>
-							<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>
+							<br>-->
 						</div>
-					</div>
+				</div>
 
-
-					<!-- Botões da página -->
-					<p class="botaoIndex">
-						<input id="limpar" class="botaoFooter" type="reset" value="Excluir">
-						<input id="mudar" class="botaoFooter" type="submit" value="Editar Projeto">
-
-					</p> 
+						<!-- Botões da página -->
+						<p class="botaoIndex">
+							<input id="limpar" class="botaoFooter" type="reset" value="Excluir">
+							<a href="#" id="btnMudarProjeto">Mudar Projeto</a>
+						</p>
+					
 				</fieldset>
 			</form>
 	</div>
