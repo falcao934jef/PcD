@@ -4,7 +4,7 @@ window.addEventListener("load", function(){
 	var dados = new Firebase("https://blistering-heat-9478.firebaseio.com");
 
 	function selecionarColaborador(){
-		dados.on("value", function(dadosBanco) {
+		dados.child('users').on("value", function(dadosBanco) {
 		 
 			var person = dadosBanco.val();
 
@@ -19,15 +19,57 @@ window.addEventListener("load", function(){
 		  			$("#idNomeDoColaborador").append(recebeDadosColaborador).append('<label>'+person[i].name+'</label><br>');
 		 		}
 			}
-		}); 
+		});
 	}
+	/*
+	Inserir funcionarios
+	dados.child('users').push({'name': 'Cristiano  de Oliveira Santos', 'project': '', 'workTime': {}})
 
+	Inserir projects
+
+	dados.child('projects').push({'name': 'Positivo'})
+
+	*/
 	selecionarColaborador();
 
 	
-	function removerColaborador(){
+	function selecionarProjeto(){
+		dados.child('projects').on("value", function(dadosBanco) {
+		 
+			var projetos = dadosBanco.val();
 
+			var listaDeProjetos = [];
+			
+		  	 // Recupera o projeto no HTML
+		  	for (var i in projetos){
 
+		  		if(listaDeProjetos.indexOf(projetos[i].name) < 0	){
+		  			$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
+		  			listaDeProjetos.push(projetos[i].name);
+		 		}
+			}
+		}); 
+	}
+	selecionarProjeto();
+
+	function filtrarPorProjeto(){
+		
+		dados.child('projects').on("value", function(dadosBanco) {
+		
+		var projetos = dadosBanco.val();
+
+			$('#idProjeto').on('change', function(){
+			var select = $(this);
+			
+				for (var i in projetos){
+					if(select){
+				}
+
+			});	
+		});
+
+	filtrarPorProjeto();
+	
 	}
 
 });
