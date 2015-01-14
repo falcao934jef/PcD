@@ -50,27 +50,32 @@ window.addEventListener("load", function(){
 			}
 		}); 
 	}
-	selecionarProjeto();
+	selecionarProjeto();	
 
-	function filtrarPorProjeto(){
-		
-		dados.child('projects').on("value", function(dadosBanco) {
-		
-		var projetos = dadosBanco.val();
+	//function filtrarColaboradoresPorProjeto(){
 
-			$('#idProjeto').on('change', function(){
-			var select = $(this);
+	$("#idProjeto").on('change', function(){
+
+		var value = this.value;
+
+		dados.on("value", function(dadosBanco) {
+
+			var personProjects = dadosBanco.child('projects').val();
+			var personUsers = dadosBanco.child('users').val();
+
+			//limpaListaDeColaboradores(); 
 			
-				for (var i in projetos){
-					if(select){
+			for (var index in personUsers){
+				if((personUsers[index].project == value) || value == '') {
+					$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
 				}
+			}
 
-			});	
 		});
-
-	filtrarPorProjeto();
-	
-	}
-
-});
-
+	//}
+	//function limpaListaDeColaboradores(){
+	//	$('#colaboradorProjeto').html('');
+	//}
+	//filtrarColaboradoresPorProjeto();
+	});
+}); // Fim do addEventListener

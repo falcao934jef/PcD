@@ -47,7 +47,7 @@ window.onload = function(){
 
 	function atualizaDadosPorColaborador(idColaborador, data, sinalAtual, sinalAnterior, horasPagas, saldoFinal,saldoAtual){
 	   // Recupera o colaborador do Firebase
-		var workTimes = dados.child(idColaborador).child('workTime');
+		var workTimes = dados.child('users').child(idColaborador).child('workTime');
 		
 		workTimes.once("value", function(workTime){ 
 			console.log(sinalAtual, sinalAnterior);
@@ -63,7 +63,7 @@ window.onload = function(){
 				console.log(workTimeData[index].date,data);
 				//Atualiza formulario
 				if(workTimeData[index].date.trim() == data.trim()){ 
-					dados.child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas});
+					dados.child('users').child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas});
 					validador = true;
 					alert("Dados atualizados com sucesso!");
 					break;
@@ -125,7 +125,7 @@ window.onload = function(){
 	function inserirHorasTrabalhadasPorColaborador(idColaborador, data, saldo, horasPagas){
 		
 		// Recupera o colaborador do Firebase
-		var recuperaColaborador = dados.child(idColaborador).child('workTime');
+		var recuperaColaborador = dados.child('users').child(idColaborador).child('workTime');
 		
 		// Inserir os dados de data, saldo e horasPagas para o colaborador
 		recuperaColaborador.push({
@@ -154,7 +154,7 @@ window.onload = function(){
 	* Função consulta dados no banco e insere no select os valores recuperados.
 	*/
 	function popularSelect(){
-		dados.on("value", function(dadosBanco) {
+		dados.child('users').on("value", function(dadosBanco) {
 		 
 		  var person = dadosBanco.val();
 		  	  
@@ -238,7 +238,7 @@ window.onload = function(){
 	function recuperaSaldoPorDataDoColaborador(idColaborador, data, callback) {
 		
 		// dbworkTime = recupera os dados do workTime do banco de dados em um array multidimensional
-		var dbworkTime = dados.child(idColaborador).child("workTime");
+		var dbworkTime = dados.child('users').child(idColaborador).child("workTime");
 		
 		// recupera a data do input e a data do banco de dados.
 		dbworkTime.on('value', function(listaTempoTrabalho){
@@ -457,7 +457,7 @@ window.onload = function(){
 		}
 		
 		// Armazena os dados de workTime
-		var dbworkTime = dados.child(colaborador).child("workTime");
+		var dbworkTime = dados.child('users').child(colaborador).child("workTime");
 
 		// Recuperando o dado workTime do colaborador selecionado
 		dbworkTime.on('value', function(workTime){
@@ -657,7 +657,7 @@ window.onload = function(){
 	function saldoDeHorasPorColaborador(idColaborador,dataInicial, dataFinal, callback){
 		
 		// Recupera os dados do workTime do banco de dados
-		dados.child(idColaborador).child('workTime').on('value',function(horasTrabalhadas){
+		dados.child('users').child(idColaborador).child('workTime').on('value',function(horasTrabalhadas){
 			
 			horasTrabalhadas = horasTrabalhadas.val();
 			var saldoDeHoras = [];
