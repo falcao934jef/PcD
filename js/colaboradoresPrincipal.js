@@ -44,7 +44,7 @@ window.addEventListener("load", function(){
 		  	for (var i in projetos){
 
 		  		if(listaDeProjetos.indexOf(projetos[i].name) < 0	){
-		  			$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
+		  			$("#idProjeto").append("<option value='"+i+"'>" +projetos[i].name+"</option>");
 		  			listaDeProjetos.push(projetos[i].name);
 		 		}
 			}
@@ -52,30 +52,36 @@ window.addEventListener("load", function(){
 	}
 	selecionarProjeto();	
 
-	//function filtrarColaboradoresPorProjeto(){
+	function filtrarColaboradoresPorProjeto(){
 
-	$("#idProjeto").on('change', function(){
+		$("#idProjeto").on('change', function(){
 
 		var value = this.value;
 
-		dados.on("value", function(dadosBanco) {
+		dados.child('users').on("value", function(dadosBanco) {
 
-			var personProjects = dadosBanco.child('projects').val();
-			var personUsers = dadosBanco.child('users').val();
+			var personUsers = dadosBanco.val();
 
-			//limpaListaDeColaboradores(); 
-			
-			for (var index in personUsers){
-				if((personUsers[index].project == value) || value == '') {
-					$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
+			limpaListaDeColaboradores(); 
+
+			if(value != ''){		
+				for (var index in personUsers){
+					if(personUsers[index].project == value) {
+						var recebeProjetos = $('<input type="checkbox" name="Nome do Colaborador" value="" id="'+index+'" data-nome="'+personUsers[index].name+'"/>');
+						$('#idNomeDoColaborador').append(recebeProjetos).append('<label>'+personUsers[index].name+'</label><br>');
+					}
 				}
-			}
+			}else{
 
+				selecionarColaborador();
+			}
 		});
-	//}
-	//function limpaListaDeColaboradores(){
-	//	$('#colaboradorProjeto').html('');
-	//}
-	//filtrarColaboradoresPorProjeto();
 	});
+}
+	function limpaListaDeColaboradores(){
+		$('#idNomeDoColaborador').html('');
+	}
+	
+	filtrarColaboradoresPorProjeto();
+
 }); // Fim do addEventListener
