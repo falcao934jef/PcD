@@ -321,7 +321,10 @@ div #btnNovoColaborador{
   margin-left: 70px;
 }
 #colaboradorProjeto {
-  margin-left: 40px;
+  margin-left: 34px;
+}
+#nomColaborador{
+	margin-left: 38px;
 }
 /*Fim do estilo da página de cadastro de projeto*/
 
