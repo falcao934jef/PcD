@@ -255,7 +255,7 @@ form input[type=number] {
   border:solid #FFA834;
   border-radius: 5px;
   background-color:#FFA834;
-  margin-left: 10px;
+  margin-left: 50px;
   height: 10px;
   font-size: 15px;
   color: #000;
@@ -289,7 +289,7 @@ div #btnNovoColaborador{
   border:solid #FFA834;
   border-radius: 5px;
   background-color:#FFA834;
-  margin-left: 50px;
+  margin-left: 10px;
   height: 30px;
   font-size: 15px;
   color: #000;

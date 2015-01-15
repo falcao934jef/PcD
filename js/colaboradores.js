@@ -500,7 +500,7 @@ window.onload = function(){
 			}
 
 			// Irá verificar qual o menor mês e ano do funcionário e irá bloquear a datas anteriores
-			$("#calendar").prop("min", menorMes);
+			$("#calendar").datepicker( "option", "minDate", menorMes);
 			$("#calendar").prop("disabled", false);	
 
 		}); // Fim dbworkTime.on('value', function(workTime)
@@ -525,7 +525,7 @@ window.onload = function(){
 		var fullDate = year + "-" + month + "-" + day;
 
 		// Irá bloquear o calendário conforme a data armazenada no fullDate
-		$("#calendar").prop("max", fullDate);
+		$("#calendar").datepicker("option","maxDate", fullDate);
 	}
 	
 	// Limpa o formulário e desabilita o checkBox
@@ -778,7 +778,9 @@ window.onload = function(){
 	        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
 		   		
 	        changeMonth: true,
-	        changeYear: true
-		    
+	        changeYear: true,
+
+	        maxDate: 'now'
+
 		});
 	});
