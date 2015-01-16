@@ -15,7 +15,7 @@ window.addEventListener("load", function(){
 
 		  		if(listaDeColaboradores.indexOf(person[i].name) < 0){
 
-		  			var recebeDadosColaborador = $('<input type="checkbox" name="Nome do Colaborador" value="'+i+'" data-nome="'+person[i].name+'"/>');  		
+		  			var recebeDadosColaborador = $('<input type="checkbox" name="nomeColaborador" value="'+i+'" data-nome="'+person[i].name+'"/>');  		
 		  			$("#idNomeDoColaborador").append(recebeDadosColaborador).append('<label>'+person[i].name+'</label><br>');
 		 		}
 			}
@@ -67,7 +67,7 @@ window.addEventListener("load", function(){
 			if(value != ''){		
 				for (var index in personUsers){
 					if(personUsers[index].project == value) {
-						var recebeProjetos = $('<input type="checkbox" name="Nome do Colaborador" value="'+index+'" data-nome="'+personUsers[index].name+'"/>');
+						var recebeProjetos = $('<input type="checkbox" name="nomeColaborador" value="'+index+'" data-nome="'+personUsers[index].name+'"/>');
 						$('#idNomeDoColaborador').append(recebeProjetos).append('<label>'+personUsers[index].name+'</label><br>');
 					}
 				}
@@ -84,11 +84,34 @@ window.addEventListener("load", function(){
 	
 	filtrarColaboradoresPorProjeto();
 
-	function removerColaborador(){
-		var listaColaboradoresSelecionados = [];
-		var check = $(this);
-		var idColaborador = check.val();
-		
-	}
+	function excluirColaboradores (){
+		$( "#caixaDialogo" ).dialog({
+		      autoOpen: false,
+		      resizable: false,
+		      modal: true,
+			    buttons: {
+				    "Confirmar": function() {
+		          	colaboradoresSelecionados.each(function(){
+		          	console.log(this.value);
+		          	});
+				    $( this ).dialog( "close" );
+				    },
+				    "Cancelar": function() {
+				    $( this ).dialog( "close" );
+		        	}
+	      		}
+	    });
 
+		dados.child('users').on("value", function(dadosBanco) {
+			var colaborador = dadosBanco.val();
+			var colaboradoresSelecionados = $('input[name=nomeColaborador]:checked');
+			console.log(colaboradoresSelecionados);
+				
+			$( "#limpar" ).click(function() {
+	     		 $( "#caixaDialogo" ).dialog( "open" );
+	   		});	
+		});
+	}
+	excluirColaboradores();
+	
 }); // Fim do addEventListener
