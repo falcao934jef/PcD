@@ -20,9 +20,10 @@ window.onload = function(){
 
 	  //Preenchendo os checkboxes e preenchendo o array de colaboradores para o gráfico.
 	  for (var i in person){
-	  	var colaboradorCheckbox = $('<input type="checkbox" name="Colaboradores" value="" id="'+i+'" data-nome="'+person[i].name+'"/>');
-	  	$("#idColaboradores form").append(colaboradorCheckbox).append('<label>'+person[i].name+'</label><br>');
-	  	colaboradorCheckbox.on('change', onColaboradorChecked);
+	  	// var colaboradorCheckbox = $('<input type="checkbox" name="Colaboradores" value="" id="'+i+'" data-nome="'+person[i].name+'"/>');
+	  	// $("#idColaboradores form").append(colaboradorCheckbox).append('<label>'+person[i].name+'</label><br>');
+	  	adicionaColaboradorNaLista(i, person[i].name);
+	  	// colaboradorCheckbox.on('change', onColaboradorChecked);
 
 	  	arrayColaboradores.push(person[i].name);
 	  	worktime = person[i].workTime;
@@ -193,7 +194,7 @@ window.onload = function(){
 	function onColaboradorChecked(){
 		var chart = $('#containerGrafico').highcharts();
 		var check = $(this);
-		var id = this.id;
+		var id = this.value;
 		var nomeColaborador = check.attr('data-nome');
 		
 		if(check.is(':checked')){
@@ -275,19 +276,29 @@ window.onload = function(){
 		dados.on("value", function(dadosBanco) {
 
 			var personProjects = dadosBanco.child('projects').val();
-			var personUsers = dadosBanco.child('users').val();
+			var person = dadosBanco.child('users').val();
 
-			limpaListaDeColaboradores(); 
 			
-			for (var index in personUsers){
-				if((personUsers[index].project == value) || value == '') {
-					adicionaColaboradorNaLista(index, personUsers[index].name);
+			
+			for (var i in person){
+				if((person[i].project == value) || value == '') {
+					$('#idColaboradores form div[data-id='+i+']').show().find('input').prop('checked', true);
+
 				}
-			}
+				else {
+					$('#idColaboradores form div[data-id='+i+']').hide().find('input').prop('checked', false);
+				}// fim if
+				console.log($('#idColaboradores form div[data-id='+i+'] input').is('checked'));
+				if(!$('#idColaboradores form div[data-id='+i+'] input').is('checked')) {
+					$('#idColaboradores form div[data-id='+i+'] input').click();
+				}
+			} // fim for
 
-		});
-	});
 
+
+		}); // fim dados.on
+	}); // fim $("#idProjeto").on
+/*
 	function consultarProjetoColaborador(){
 		dados.on("value", function(dadosBanco){
 
@@ -307,27 +318,32 @@ window.onload = function(){
 		  	console.log(person);
 
 		  	for (var i in person){
-		  		/*
+		  		
 			  	var colaboradorCheckbox = $('<input type="checkbox" name="Colaboradores" value="'+i+'" data-nome="'+person[i].name+'"/>');
 				$("#idColaboradores").append('<label>'+person[i].name+'</label><br>');
 				colaboradorCheckbox.on('change', onColaboradorChecked);
-				*/
+				
 				adicionaColaboradorNaLista(i, person[i].name);
 			}
 
 		}); // Fim dados.on("value", function(dadosBanco)
 	} // Fim function popularSelect
 
+*/
+
 
 
 
 	function adicionaColaboradorNaLista(idColaborador, nomeColaborador){
 		
+		var div = $('<div data-id="'+idColaborador+'"></div>');
 		var input = $('<input type="checkbox" name="Colaboradores" value="'+idColaborador+'"  data-nome="'+nomeColaborador+'"/>');
 		var label = $('<label>'+nomeColaborador+'</label>');
 		input.on('change', onColaboradorChecked);
 
-	 	$('#idColaboradores form').append(input).append(label).append("<br>");
+		div.append(input).append(label);
+
+	 	$('#idColaboradores form').append(div);
 	}
 
 	function limpaListaDeColaboradores(){
