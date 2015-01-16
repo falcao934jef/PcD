@@ -15,7 +15,7 @@ window.addEventListener("load", function(){
 
 		  		if(listaDeColaboradores.indexOf(person[i].name) < 0){
 
-		  			var recebeDadosColaborador = $('<input type="checkbox" name="Nome do Colaborador" value="" id="'+i+'" data-nome="'+person[i].name+'"/>');  		
+		  			var recebeDadosColaborador = $('<input type="checkbox" name="nomeColaborador" value="'+i+'" data-nome="'+person[i].name+'"/>');  		
 		  			$("#idNomeDoColaborador").append(recebeDadosColaborador).append('<label>'+person[i].name+'</label><br>');
 		 		}
 			}
@@ -44,7 +44,7 @@ window.addEventListener("load", function(){
 		  	for (var i in projetos){
 
 		  		if(listaDeProjetos.indexOf(projetos[i].name) < 0	){
-		  			$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
+		  			$("#idProjeto").append("<option value='"+i+"'>" +projetos[i].name+"</option>");
 		  			listaDeProjetos.push(projetos[i].name);
 		 		}
 			}
@@ -52,30 +52,66 @@ window.addEventListener("load", function(){
 	}
 	selecionarProjeto();	
 
-	//function filtrarColaboradoresPorProjeto(){
+	function filtrarColaboradoresPorProjeto(){
 
-	$("#idProjeto").on('change', function(){
+		$("#idProjeto").on('change', function(){
 
 		var value = this.value;
 
-		dados.on("value", function(dadosBanco) {
+		dados.child('users').on("value", function(dadosBanco) {
 
-			var personProjects = dadosBanco.child('projects').val();
-			var personUsers = dadosBanco.child('users').val();
+			var personUsers = dadosBanco.val();
 
-			//limpaListaDeColaboradores(); 
-			
-			for (var index in personUsers){
-				if((personUsers[index].project == value) || value == '') {
-					$("#idProjeto").append("<option value='"+projetos[i].name+"'>" +projetos[i].name+"</option>");
+			limpaListaDeColaboradores(); 
+
+			if(value != ''){		
+				for (var index in personUsers){
+					if(personUsers[index].project == value) {
+						var recebeProjetos = $('<input type="checkbox" name="nomeColaborador" value="'+index+'" data-nome="'+personUsers[index].name+'"/>');
+						$('#idNomeDoColaborador').append(recebeProjetos).append('<label>'+personUsers[index].name+'</label><br>');
+					}
 				}
-			}
+			}else{
 
+				selecionarColaborador();
+			}
 		});
-	//}
-	//function limpaListaDeColaboradores(){
-	//	$('#colaboradorProjeto').html('');
-	//}
-	//filtrarColaboradoresPorProjeto();
 	});
+}
+	function limpaListaDeColaboradores(){
+		$('#idNomeDoColaborador').html('');
+	}
+	
+	filtrarColaboradoresPorProjeto();
+
+	function excluirColaboradores (){
+		$( "#caixaDialogo" ).dialog({
+		      autoOpen: false,
+		      resizable: false,
+		      modal: true,
+			    buttons: {
+				    "Confirmar": function() {
+		          	colaboradoresSelecionados.each(function(){
+		          	console.log(this.value);
+		          	});
+				    $( this ).dialog( "close" );
+				    },
+				    "Cancelar": function() {
+				    $( this ).dialog( "close" );
+		        	}
+	      		}
+	    });
+
+		dados.child('users').on("value", function(dadosBanco) {
+			var colaborador = dadosBanco.val();
+			var colaboradoresSelecionados = $('input[name=nomeColaborador]:checked');
+			console.log(colaboradoresSelecionados);
+				
+			$( "#limpar" ).click(function() {
+	     		 $( "#caixaDialogo" ).dialog( "open" );
+	   		});	
+		});
+	}
+	excluirColaboradores();
+	
 }); // Fim do addEventListener
