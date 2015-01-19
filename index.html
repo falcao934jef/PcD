@@ -57,14 +57,14 @@
 			
 						<div class="novoColaborador dialog" title="Novo colaborador">
 							<p>Insira o Colaborador</p>
-							<input type="text" name="">
-							<input type="button" value="Salvar">
+							<input type="text" id="inputColaborador">
+							<input type="button" value="Salvar" id="salvarColaborador">
 						</div>
 
 						<div class="NovoProjeto dialog" title="Novo projeto">
 							<p>Insira o Projeto</p>
-							<input type="text" name="">
-							<input type="button" value="Salvar">
+							<input type="text" id="inputProjeto">
+							<input type="button" id="salvarProjeto" value="Salvar">
 						</div>
 						<div class="MudarProjeto dialog" title="Mudar projeto">
 							<p>Mudar Projeto</p>
@@ -95,7 +95,7 @@
 
 						<!-- Botões da página -->
 						<p class="botaoIndex">
-							<input id="limpar" class="botaoFooter" type="reset" value="Excluir">
+							<input id="limpar" class="botaoFooter" type="button" value="Excluir" disabled = "disabled">
 							<a href="#" id="btnMudarProjeto">Mudar Projeto</a>
 						</p>
 					
