@@ -29,9 +29,6 @@ window.onload = function(){
 	  	worktime = person[i].workTime;
 	  	colecao[i] = {};
 
-	  	//Gerando o grafico
-	  	gerarGrafico(arrayColaboradores, 0);
-
 	  	//Pegando o ano [2014] de cada colaborador
 	  	for (var w in worktime){
 	  		var dataAtual = new Date(worktime[w].date);
@@ -47,7 +44,13 @@ window.onload = function(){
 			$.each(dataMes, function(i, el){
 			    if($.inArray(el, uniqueMeses) === -1) uniqueMeses.push(el);
 			});//Fim each
-	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].balance;	  	
+	  		
+	  		//Recuperar o Saldo e colocar no grafico
+	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].balance;	
+
+	  		//Gerando o grafico
+	  		gerarGrafico(arrayColaboradores);
+
 		}//Fim for w
 		
 	  }// Fim for i
@@ -216,8 +219,10 @@ window.onload = function(){
 
 	}
 
-	function gerarGrafico(arrayColaboradores, saldoColaboradores){
+	function gerarGrafico(arrayColaboradores){
 		//Gráfico
+		
+		console.log(arrayColaboradores);
 
 		$('#containerGrafico').highcharts({
 			chart: {
@@ -253,6 +258,12 @@ window.onload = function(){
 						
 					]
 		});
+
+		var chart = $('#containerGrafico').highcharts();
+		chart.redraw();
+
+		console.log("limpou",chart);
+
 	}
 
 	// Mostrar a lista de projetos cadastrados do BD no HTML
@@ -278,23 +289,37 @@ window.onload = function(){
 			var personProjects = dadosBanco.child('projects').val();
 			var person = dadosBanco.child('users').val();
 
-			
+			//limpando o array de colaboradores
+			arrayColaboradores = [];
 			
 			for (var i in person){
+
+				//Mostrar os colaboradores do projeto
 				if((person[i].project == value) || value == '') {
 					$('#idColaboradores form div[data-id='+i+']').show().find('input').prop('checked', true);
-
+					//{Selecionar projeto irá lista os nomes de cada colaborador ex: Samsung}
+					//Retona: [halef, nebo e rafael]
+					// Para pegar os nomes dos colaboradores de cada projeto utila: $('#idColaboradores form div[data-id='+i+']').text()
+					//Proxima etapa: Popular o array do grafico.
+					//Populando o array com os colaboradores
+					arrayColaboradores.push($('#idColaboradores form div[data-id='+i+']').text());
 				}
+		
+				//ocultar os colaboradores que não fazem parte do projeto
 				else {
 					$('#idColaboradores form div[data-id='+i+']').hide().find('input').prop('checked', false);
 				}// fim if
-				console.log($('#idColaboradores form div[data-id='+i+'] input').is('checked'));
+
+				
+				
+
+				//console.log($('#idColaboradores form div[data-id='+i+'] input').is('checked'));
 				if(!$('#idColaboradores form div[data-id='+i+'] input').is('checked')) {
 					$('#idColaboradores form div[data-id='+i+'] input').click();
 				}
 			} // fim for
-
-
+			gerarGrafico(arrayColaboradores);
+			console.log(arrayColaboradores);
 
 		}); // fim dados.on
 	}); // fim $("#idProjeto").on
