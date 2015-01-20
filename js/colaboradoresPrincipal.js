@@ -75,7 +75,7 @@ window.addEventListener("load", function(){
 					}
 				}
 				if($('input[name=nomeColaborador]').length ==0){
-					$('#idNomeDoColaborador').html('<span id = "projetoVazio"> Não existe colaboradores no projeto selecionado.</span>');
+					$('#idNomeDoColaborador').html('<span id ="projetoVazio"> Não existe colaboradores no projeto selecionado.</span>');
 				}
 
 			}else{
@@ -134,11 +134,10 @@ window.addEventListener("load", function(){
 	});
 
 	$('#salvarProjeto').click(function(){
-		
-		if($('#inputProjeto').val() != ''){
+		if($('#inputProjeto').val() != ''){	
 			dados.child('projects').push({'name': $('#inputProjeto').val() });
 		}else{
-			alert("Por favor digite o nome do novo projeto!")
+			$(".mensagemAlerta").show();
 		}
 	});
 
@@ -149,5 +148,12 @@ window.addEventListener("load", function(){
 		}else{
 			alert("Por favor digite o nome do novo colaborador!")
 		}
+	});
+
+	$( "#btnNovoColaborador" ).click(function() {
+			if($("#btnNovoColaborador").prop("disabled") == false){
+				$( ".novoColaborador" ).dialog( "open" );
+			}
+		return false;
 	});
 }); // Fim do addEventListener

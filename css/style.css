@@ -318,13 +318,25 @@ div #btnNovoColaborador{
   text-align: center;
 }
 #selecionarProjeto{
-  margin-left: 70px;
+  margin-left: 68px;
 }
+
 #colaboradorProjeto {
   margin-left: 34px;
 }
 #nomColaborador{
 	margin-left: 38px;
+}
+
+.mensagemAlerta{
+	display: none;
+	color: red;
+}
+
+#projetoVazio{
+  color: #FF0000;
+  font-size: 15px;
+  margin-left: 4px;
 }
 /*Fim do estilo da página de cadastro de projeto*/
 

@@ -52,19 +52,20 @@
 						
 						<div class="projetoLadoDireito">	
 							<a href="#" id="btnNovoProjeto">Novo Projeto</a>
-							<a href="#" id="btnNovoColaborador">Novo Colaborador</a>
+							<input href="#" disabled="disabled" type="button" id="btnNovoColaborador">Novo Colaborador</input>
 						</div>
 			
-						<div class="novoColaborador dialog" title="Novo colaborador">
+						<div class="novoColaborador dialog" id="novoColaborador" title="Novo colaborador">
 							<p>Insira o Colaborador</p>
 							<input type="text" id="inputColaborador">
 							<input type="button" value="Salvar" id="salvarColaborador">
 						</div>
 
-						<div class="NovoProjeto dialog" title="Novo projeto">
+						<div class="NovoProjeto dialog" id="novoProjeto" title="Novo projeto">
 							<p>Insira o Projeto</p>
 							<input type="text" id="inputProjeto">
 							<input type="button" id="salvarProjeto" value="Salvar">
+							<p class="mensagemAlerta">Por favor digite o nome do novo projeto!</p>
 						</div>
 						<div class="MudarProjeto dialog" title="Mudar projeto">
 							<p>Mudar Projeto</p>
@@ -95,7 +96,7 @@
 
 						<!-- Botões da página -->
 						<p class="botaoIndex">
-							<input id="limpar" class="botaoFooter" type="button" value="Excluir" disabled = "disabled">
+							<input id="limpar" class="botaoFooter" type="button" value="Excluir" disabled ="disabled">
 							<a href="#" id="btnMudarProjeto">Mudar Projeto</a>
 						</p>
 					
