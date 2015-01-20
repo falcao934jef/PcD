@@ -243,25 +243,40 @@ form input[type=number] {
 }
 /*Inicio dos botões Colaborador e Novo Projeto */
 
-.projetoLadoDireito{
+/*.projetoLadoDireito{
 	position: relative;
 	float: right; 
  	margin-top: 4px;
-    margin-right: 91px;
+    margin-right: 91px; 
+}*/
 
-  
+ #btnNovoProjeto a {
+	  border:solid #FFA834;
+	  border-radius: 5px;
+	  background-color:#FFA834;
+	  margin-left: 50px;
+	  height: 15px;
+	  font-size: 15px;
+	  color: #000;
+	  padding: 4.4px;
+	  text-decoration: none;
+	  margin-top: -10px;
+	  float:right;
+	  text-align: center;
+	  margin-right: 5px;
+
 }
- div #btnNovoProjeto {
-  border:solid #FFA834;
-  border-radius: 5px;
-  background-color:#FFA834;
-  margin-left: 50px;
-  height: 10px;
-  font-size: 15px;
-  color: #000;
-  padding: 2px;
-  text-decoration: none;
-  margin-top: 30px;
+ #btnNovoColaborador input{
+	border: solid #ffa834;
+	border-radius: 5px;
+	background-color: #FFA834;
+	margin-left: 10px;
+	height: 30px;
+	font-size: 15px;
+	margin-top: -10px;
+	float: right;
+	padding: 2.4px;
+	  margin-right: 70px;
 }
 #btnMudarProjeto {
   border:solid #FFA834;
@@ -284,21 +299,6 @@ form input[type=number] {
 	margin-top: 23px;
 	margin-bottom: 0px;
 }
-
-div #btnNovoColaborador{
-  border:solid #FFA834;
-  border-radius: 5px;
-  background-color:#FFA834;
-  margin-left: 10px;
-  height: 30px;
-  font-size: 15px;
-  color: #000;
-  padding: 2px;
-  text-decoration: none;
-
-}
-
-
 
 /*Fim dos botões Colaborador e Novo Projeto*/
 
@@ -332,11 +332,10 @@ div #btnNovoColaborador{
 	display: none;
 	color: red;
 }
-
 #projetoVazio{
-  color: #FF0000;
-  font-size: 15px;
-  margin-left: 4px;
+	color: #ff0000;
+	font-size:15px;
+	margin-left:4px;
 }
 /*Fim do estilo da página de cadastro de projeto*/
 

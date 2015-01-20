@@ -41,24 +41,32 @@
 						<div id="selecionarProjeto">
 						<br>
 							<!-- Nome do projeto -->
+							
 							<label class="idsProjeto" for="colaborador">Nome do Projeto:</label>
 							<select id="idProjeto" name="idProjeto">
 								<option value="">Selecione o projeto</option>
 							</select>
+							
 						</div>
 						<br>
 
 						<!-- Input Checkbox para novo Projeto -->
 						
-						<div class="projetoLadoDireito">	
-							<a href="#" id="btnNovoProjeto">Novo Projeto</a>
-							<input href="#" disabled="disabled" type="button" id="btnNovoColaborador">Novo Colaborador</input>
-						</div>
+							<div id="btnNovoColaborador">
+								<input value="Novo Colaborador" type="button"></input>
+							</div>
+
+							<div id="btnNovoProjeto">
+								<a href="#">Novo Projeto</a>
+							</div>
+
 			
 						<div class="novoColaborador dialog" id="novoColaborador" title="Novo colaborador">
 							<p>Insira o Colaborador</p>
 							<input type="text" id="inputColaborador">
 							<input type="button" value="Salvar" id="salvarColaborador">
+							<p class="mensagemAlerta">Por favor digite o nome do novo colaborador!</p> 
+
 						</div>
 
 						<div class="NovoProjeto dialog" id="novoProjeto" title="Novo projeto">
