@@ -136,23 +136,30 @@ window.addEventListener("load", function(){
 	$('#salvarProjeto').click(function(){
 		if($('#inputProjeto').val() != ''){	
 			dados.child('projects').push({'name': $('#inputProjeto').val() });
+			$("#novoProjeto").dialog( "close" );
+			$("#inputProjeto").val('');
+
 		}else{
 			$(".mensagemAlerta").show();
 		}
 	});
 
-	$('#salvarColaborador').click(function(){
-		
-		if($('#inputColaborador').val() != ''){
-			dados.child('users').push({'name': '', 'project': '', 'workTime': {}})
-		}else{
-			alert("Por favor digite o nome do novo colaborador!")
-		}
-	});
+	$("#idProjeto").on('change', function(){
 
+ 		var recuparaProjeto = this.value;
+ 		
+ 		$('#salvarColaborador').click(function(){
+			if($('#inputColaborador').val() != ''){	
+				dados.child('users').push({'name': $('#inputColaborador').val(), 'project': recuparaProjeto, 'workTime': {}})
+			}else{
+				$(".mensagemAlerta").show();
+			}	
+		});
+	});
+	
 	$( "#btnNovoColaborador" ).click(function() {
 			if($("#btnNovoColaborador").prop("disabled") == false){
-				$( ".novoColaborador" ).dialog( "open" );
+				$( "#novoColaborador" ).dialog( "open" );
 			}
 		return false;
 	});

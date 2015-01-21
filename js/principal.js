@@ -20,4 +20,15 @@ window.onload = function(){
 		$('.MudarProjeto').dialog('open');
 	});
 
+	$( "#mensagemSucesso" ).dialog({
+		autoOpen: false,
+		resizable: false,
+		modal: true,
+		buttons: {
+		
+			"OK": function() {
+				$(this).dialog('close');			 	
+			}     	
+	    }
+	});
 }
