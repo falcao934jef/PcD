@@ -29,6 +29,7 @@ window.onload = function(){
 		var sinalAnterior = $('#sinalAnterior').text();
 
 		var saldoFinal = $('#total').val();
+		console.log($('#total').val());
 		var horasPagas = arrayFormulario.qtsHorasHora + ':' + arrayFormulario.qtsHorasMinuto;
 		var saldoAtual = arrayFormulario.saldoHoras + ':' + arrayFormulario.saldoMinutos;
 
@@ -58,12 +59,12 @@ window.onload = function(){
 			//Falta atualizar o formulário e firebase
 			var workTimeData = workTime.val();
 			var validador = false;
-			console.log(workTimeData);
+
 			for(var index in workTimeData){
 				console.log(workTimeData[index].date,data);
 				//Atualiza formulario
 				if(workTimeData[index].date.trim() == data.trim()){ 
-					dados.child('users').child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas});
+					dados.child('users').child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas, 'total': saldoFinal});
 					validador = true;
 					alert("Dados atualizados com sucesso!");
 					break;
@@ -71,7 +72,7 @@ window.onload = function(){
 			}
 
 			if (!validador){
-				inserirHorasTrabalhadasPorColaborador(idColaborador, data, saldoFinal, horasPagas);
+				inserirHorasTrabalhadasPorColaborador(idColaborador, data, saldoAtual, horasPagas, saldoFinal);
 				alert("Dados inseridos com sucesso!");
 			}
 
@@ -131,7 +132,8 @@ window.onload = function(){
 		recuperaColaborador.push({
 			"date": data,
 			"balance": saldo,
-			"payed": horasPagas
+			"payed": horasPagas,
+			"total": saldo
 		}); // Fim recuperaColaborador
 
 	} // Fim function inserirHorasTrabalhadasPorColaborador
