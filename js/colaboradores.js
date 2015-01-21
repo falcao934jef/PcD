@@ -433,7 +433,7 @@ window.onload = function(){
 		var workTime;
 		var setMes = "";
 		var setAno = "";
-		var minAno = "2500";
+		var minAno = "1500";
 		var minMes = "13";
 		var menorMes="";
 		var saldoAnterior = "";		
