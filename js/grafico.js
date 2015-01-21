@@ -13,7 +13,6 @@ window.onload = function(){
 	var colaboradoresSelecionadosId = [];
 	var colaboradoresSelecionadosNome = [];
 
-
 	dados.child('users').on("value", function(data) {
 
 	  //carregando do banco de dados (Firebase) todos os dados de cada colaborador	{objeto}
@@ -32,7 +31,6 @@ window.onload = function(){
 
 	  	//Pegando o ano [2014] de cada colaborador
 	  	for (var w in worktime){
-
 	  		var dataAtual = new Date(worktime[w].date);
 
 	  		arrayAnos.push(dataAtual.getUTCFullYear());
@@ -44,11 +42,11 @@ window.onload = function(){
 			});//Fim each
 
 			$.each(dataMes, function(i, el){
-				if($.inArray(el, uniqueMeses) === -1) uniqueMeses.push(el);
+			    if($.inArray(el, uniqueMeses) === -1) uniqueMeses.push(el);
 			});//Fim each
-
+	  		
 	  		//Recuperar o Saldo e colocar no grafico
-	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].total; 	
+	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].balance;	
 
 	  		//Gerando o grafico
 	  		gerarGrafico(arrayColaboradores);
@@ -222,8 +220,10 @@ window.onload = function(){
 	}
 
 	function gerarGrafico(arrayColaboradores){
-
 		//Gráfico
+		
+		console.log(arrayColaboradores);
+
 		$('#containerGrafico').highcharts({
 			chart: {
 				type: 'column'
@@ -233,7 +233,7 @@ window.onload = function(){
 				//text: 'Saldo de horas trabalhadas'
 			},
 			xAxis: {
-				categories: arrayColaboradores //carrega os nomes ["Rafael", "Jeff", "Halef"]
+				categories: arrayColaboradores //["Rafael", "Jeff", "Halef"]
 			},
 			
 			yAxis: {
@@ -259,7 +259,10 @@ window.onload = function(){
 					]
 		});
 
-		carregarMeses();
+		var chart = $('#containerGrafico').highcharts();
+		chart.redraw();
+
+		console.log("limpou",chart);
 
 	}
 
@@ -281,21 +284,17 @@ window.onload = function(){
 
 		var value = this.value;
 
-		//limpando o array de colaboradores
-		
-
 		dados.on("value", function(dadosBanco) {
 
 			var personProjects = dadosBanco.child('projects').val();
 			var person = dadosBanco.child('users').val();
-			arrayColaboradores = [];
 
+			//limpando o array de colaboradores
+			arrayColaboradores = [];
+			
 			for (var i in person){
 
-
-
 				//Mostrar os colaboradores do projeto
-
 				if((person[i].project == value) || value == '') {
 					$('#idColaboradores form div[data-id='+i+']').show().find('input').prop('checked', true);
 					//{Selecionar projeto irá lista os nomes de cada colaborador ex: Samsung}
@@ -304,38 +303,6 @@ window.onload = function(){
 					//Proxima etapa: Popular o array do grafico.
 					//Populando o array com os colaboradores
 					arrayColaboradores.push($('#idColaboradores form div[data-id='+i+']').text());
-
-
-	  				worktime = person[i].workTime;
-	  				colecao[i] = {};
-
-				  	//Pegando o ano [2014] de cada colaborador
-				  	for (var w in worktime){
-
-				  		var dataAtual = new Date(worktime[w].date);
-
-				  		arrayAnos.push(dataAtual.getUTCFullYear());
-
-				  		dataMes.push(arrayMeses[dataAtual.getUTCMonth()]);
-
-						$.each(arrayAnos, function(i, el){
-						    if($.inArray(el, uniqueAno) === -1) uniqueAno.push(el);
-						});//Fim each
-
-						$.each(dataMes, function(i, el){
-							if($.inArray(el, uniqueMeses) === -1) uniqueMeses.push(el);
-						});//Fim each
-
-				  		//Recuperar o Saldo e colocar no grafico
-				  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].balance;	
-
-				  		//Gerando o grafico
-				  		gerarGrafico(arrayColaboradores);
-
-					}//Fim for w
-
-
-
 				}
 		
 				//ocultar os colaboradores que não fazem parte do projeto
@@ -343,21 +310,57 @@ window.onload = function(){
 					$('#idColaboradores form div[data-id='+i+']').hide().find('input').prop('checked', false);
 				}// fim if
 
-				//gerarGrafico(arrayColaboradores);
+				
+				
 
+				//console.log($('#idColaboradores form div[data-id='+i+'] input').is('checked'));
 				if(!$('#idColaboradores form div[data-id='+i+'] input').is('checked')) {
 					$('#idColaboradores form div[data-id='+i+'] input').click();
 				}
 			} // fim for
+			gerarGrafico(arrayColaboradores);
+			console.log(arrayColaboradores);
+
 		}); // fim dados.on
-		
-			
-		gerarGrafico(arrayColaboradores);
-		
 	}); // fim $("#idProjeto").on
+/*
+	function consultarProjetoColaborador(){
+		dados.on("value", function(dadosBanco){
+
+			var personProjects = dadosBanco.child('projects').val();
+			var personUsers = dadosBanco.child('users').val();
+
+			console.log(personProjects, personUsers);
+		});
+	}
+
+	consultarProjetoColaborador();
+
+	function colaboradorPorProjeto(){
+		dados.on("value", function(dadosBanco) {
+
+		  var person = dadosBanco.val();
+		  	console.log(person);
+
+		  	for (var i in person){
+		  		
+			  	var colaboradorCheckbox = $('<input type="checkbox" name="Colaboradores" value="'+i+'" data-nome="'+person[i].name+'"/>');
+				$("#idColaboradores").append('<label>'+person[i].name+'</label><br>');
+				colaboradorCheckbox.on('change', onColaboradorChecked);
+				
+				adicionaColaboradorNaLista(i, person[i].name);
+			}
+
+		}); // Fim dados.on("value", function(dadosBanco)
+	} // Fim function popularSelect
+
+*/
+
+
+
 
 	function adicionaColaboradorNaLista(idColaborador, nomeColaborador){
-
+		
 		var div = $('<div data-id="'+idColaborador+'"></div>');
 		var input = $('<input type="checkbox" name="Colaboradores" value="'+idColaborador+'"  data-nome="'+nomeColaborador+'"/>');
 		var label = $('<label>'+nomeColaborador+'</label>');

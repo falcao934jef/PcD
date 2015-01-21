@@ -28,14 +28,14 @@ window.onload = function(){
 		var sinalAnterior = $('#sinalAnterior').text();
 
 		var saldoFinal = $('#total').val();
-		console.log($('#total').val());
 		var horasPagas = arrayFormulario.qtsHorasHora + ':' + arrayFormulario.qtsHorasMinuto;
 		var saldoAtual = arrayFormulario.saldoHoras + ':' + arrayFormulario.saldoMinutos;
 
 		if (isNegativo(saldoFinal)){
 
-				alert("Não é possível realizar o pagamento, devido as horas serem negativas!");
-				
+				$(function() {
+					$( "dialogoHoraNegativa" ).dialog();
+				});
 		}else{
 
 			atualizaDadosPorColaborador(arrayFormulario.idColaborador, dataSemDia(arrayFormulario.data),
@@ -58,12 +58,12 @@ window.onload = function(){
 			//Falta atualizar o formulário e firebase
 			var workTimeData = workTime.val();
 			var validador = false;
-
+			console.log(workTimeData);
 			for(var index in workTimeData){
 				console.log(workTimeData[index].date,data);
 				//Atualiza formulario
 				if(workTimeData[index].date.trim() == data.trim()){ 
-					dados.child('users').child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas, 'total': saldoFinal});
+					dados.child('users').child(idColaborador).child('workTime').child(index).set({'balance': saldoAtual, 'date': data, 'payed': horasPagas});
 					validador = true;
 					alert("Dados atualizados com sucesso!");
 					break;
@@ -71,7 +71,7 @@ window.onload = function(){
 			}
 
 			if (!validador){
-				inserirHorasTrabalhadasPorColaborador(idColaborador, data, saldoAtual, horasPagas, saldoFinal);
+				inserirHorasTrabalhadasPorColaborador(idColaborador, data, saldoFinal, horasPagas);
 				alert("Dados inseridos com sucesso!");
 			}
 
@@ -102,7 +102,7 @@ window.onload = function(){
 	function inserirColaborador(nome, data, saldo){
 
 		// Recebe os dados da data e o saldo de horas
-		var newWorkTime = {"date": data, "balance": saldo };
+		var newWorkTime = {"date": data, "balance": saldo};
 
 		/*
 		* Dados push armazena dados no Firebase
@@ -131,16 +131,15 @@ window.onload = function(){
 		recuperaColaborador.push({
 			"date": data,
 			"balance": saldo,
-			"payed": horasPagas,
-			"total": saldo
+			"payed": horasPagas
 		}); // Fim recuperaColaborador
 
 	} // Fim function inserirHorasTrabalhadasPorColaborador
 
-	/*inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-01", "03:15", "00:00");
-	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-02", "-09:19", "09:30");
-	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-03", "-01:10", "01:00");
-	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-04", "-00:01", "00:00");*/
+	/*inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-01", "03:15", "00:00");
+	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-02", "09:19", "09:30");
+	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-03", "01:10", "01:00");
+	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-04", "00:01", "00:00");*/
 	
 	/*Chamadas para inserir o funcionario.
 	inserirColaborador("Fernando", "2012-03-03", "12:32");
@@ -435,7 +434,7 @@ window.onload = function(){
 		var workTime;
 		var setMes = "";
 		var setAno = "";
-		var minAno = "2500";
+		var minAno = "1500";
 		var minMes = "13";
 		var menorMes="";
 		var saldoAnterior = "";		

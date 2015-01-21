@@ -61,6 +61,21 @@ body{
 	    font-family: Verdana;
 	}
 
+	#msgConfirmacao{
+		color: #fff;
+		width: 250px;
+		height: 30px;
+		font-family: Arial bold;
+		font-size: 20px;
+		border-radius: 5px;
+		background-color: #32CD32;
+		margin-left: 375px;
+	}
+
+	#msgSalvo{
+		padding-top:4px;
+	}
+
 	#container #menu a{
 		text-decoration: none;
 		color: #000;
@@ -124,7 +139,6 @@ form {
 }
 fieldset{
 	min-height: 300px;
-	padding-top: 40px;
 	border: 0px;
 }
 form p {

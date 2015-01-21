@@ -32,6 +32,10 @@
 
 			<!-- Início do form-->
 			<form action="" method="post" name="form" id="form">
+
+		<div id="msgConfirmacao">
+			<p id ="msgSalvo"><spam id="confirmar">SALVO<spam> COM SUCESSO</p>
+		</div>
 				<!-- Fieldset é a div geral com todos os inputs -->
 				<fieldset> 
 				
@@ -53,7 +57,7 @@
 						<!-- Input Checkbox para novo Projeto -->
 						
 							<div id="btnNovoColaborador">
-								<input disabled="disabled" id="botaoNovoColaborador" value="Novo Colaborador" type="button"></input>
+								<input value="Novo Colaborador" type="button"></input>
 							</div>
 
 							<div id="btnNovoProjeto">
@@ -94,11 +98,12 @@
 
 		           		<div id="colaboradorProjeto">
 							<!-- Input do Nome do Colaborador -->	
-							<div id="idNomeDoColaborador" class="nomeDoColaborador" for="nome_do_colaborador">
-							<!--<input type="checkbox" name="Colaborador" value="Cléu Mendes de Sá">
-							<label>Cléu Mendes de Sá</label>
-							<br>-->
+						<div id="containerColaboradores" class="nomeDoColaborador" for="nome_do_colaborador">
+
+							<div id="nomeColaborador">
+								
 							</div>
+						</div>
 
 							<div id="caixaDialogo" title="Confirmar exclusão?">
 							<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Deseja excluir o(s) coloborador(es) selecionado(s)?</p>
