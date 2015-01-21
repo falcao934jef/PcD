@@ -1,4 +1,3 @@
-
 /*Título: Projeto Banco de Horas
 * Descrição: Este projeto destina-se para fazer o acompanhamento das horas dos colaboradores do
 * Instituto de Pesquisas Eldorado, onde são armazenadas todas as horas com os seus devidos cálculos
@@ -35,8 +34,8 @@ window.onload = function(){
 
 		if (isNegativo(saldoFinal)){
 
-			alert("Não é possível realizar o pagamento, devido as horas ser negativas!");
-			event.preventDefault();
+				alert("Não é possível realizar o pagamento, devido as horas serem negativas!");
+				
 		}else{
 
 			atualizaDadosPorColaborador(arrayFormulario.idColaborador, dataSemDia(arrayFormulario.data),
@@ -138,10 +137,10 @@ window.onload = function(){
 
 	} // Fim function inserirHorasTrabalhadasPorColaborador
 
-	/*inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-01", "03:15", "00:00");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-02", "09:19", "09:30");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-03", "01:10", "01:00");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-04", "00:01", "00:00");*/
+	/*inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-01", "03:15", "00:00");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-02", "-09:19", "09:30");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-03", "-01:10", "01:00");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-04", "-00:01", "00:00");*/
 	
 	/*Chamadas para inserir o funcionario.
 	inserirColaborador("Fernando", "2012-03-03", "12:32");

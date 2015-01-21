@@ -24,35 +24,21 @@ window.addEventListener("load", function(){
 			}
 		});
 	}
-	/*
-	Inserir funcionarios
-	dados.child('users').push({'name': 'Cristiano  de Oliveira Santos', 'project': '', 'workTime': {}})
 
-	Inserir projects
-
-	dados.child('projects').push({'name': 'Positivo'})
-
-	*/
 	selecionarColaborador();
+	
+	dados.child('projects').on("value", function(dadosBanco) {
+	 
+	 	limpaSelectProjeto();
+		var projetos = dadosBanco.val();
 
-	function selecionarProjeto(){
-		dados.child('projects').on("value", function(dadosBanco) {
-		 
-			var projetos = dadosBanco.val();
-
-			var listaDeProjetos = [];
-			
-		  	 // Recupera o projeto no HTML
-		  	for (var i in projetos){
-
-		  		if(listaDeProjetos.indexOf(projetos[i].name) < 0	){
-		  			$("#idProjeto").append("<option value='"+i+"'>" +projetos[i].name+"</option>");
-		  			listaDeProjetos.push(projetos[i].name);
-		 		}
-			}
-		}); 
-	}
-	selecionarProjeto();	
+		
+	  	 // Recupera o projeto no HTML
+	  	for (var i in projetos){
+	  		$("#idProjeto").append("<option value='"+i+"'>" +projetos[i].name+"</option>");
+	 	}
+	}); 
+	
 
 	function filtrarColaboradoresPorProjeto(){
 
@@ -63,7 +49,6 @@ window.addEventListener("load", function(){
 		dados.child('users').on("value", function(dadosBanco) {
 
 			var personUsers = dadosBanco.val();
-
 			limpaListaDeColaboradores(); 
 
 			if(value != ''){		
@@ -88,6 +73,10 @@ window.addEventListener("load", function(){
 	function limpaListaDeColaboradores(){
 		$('#idNomeDoColaborador').html('');
 		$("#limpar").prop("disabled", true);
+	}
+
+	function limpaSelectProjeto(){
+		$('#idProjeto').html("<option value=''>Selecione o projeto</option>");
 	}
 	
 	filtrarColaboradoresPorProjeto();
@@ -136,23 +125,39 @@ window.addEventListener("load", function(){
 	$('#salvarProjeto').click(function(){
 		if($('#inputProjeto').val() != ''){	
 			dados.child('projects').push({'name': $('#inputProjeto').val() });
+			$("#novoProjeto").dialog( "close" );
+			$("#inputProjeto").val('');
+
 		}else{
 			$(".mensagemAlerta").show();
 		}
 	});
 
-	$('#salvarColaborador').click(function(){
-		
-		if($('#inputColaborador').val() != ''){
-			dados.child('users').push({'name': '', 'project': '', 'workTime': {}})
+	$("#idProjeto").on('change', function(){
+		var value = this.value;
+		if(value != ''){
+			$("#botaoNovoColaborador").prop("disabled", false);
 		}else{
-			alert("Por favor digite o nome do novo colaborador!")
+			$("#botaoNovoColaborador").prop("disabled", true);
 		}
 	});
+		
+	$('#salvarColaborador').click(function(){
+		var recuparaProjeto = this.value;
+
+		if($('#inputColaborador').val() != ''){	
+			dados.child('users').push({'name': $('#inputColaborador').val(), 'project': recuparaProjeto, 'workTime': {}})
+			$("#novoColaborador").dialog( "close" );
+			$("#inputColaborador").val('');
+					}else{
+			$(".mensagemAlerta").show();
+		}	
+	});
+	
 
 	$( "#btnNovoColaborador" ).click(function() {
 			if($("#btnNovoColaborador").prop("disabled") == false){
-				$( ".novoColaborador" ).dialog( "open" );
+				$( "#novoColaborador" ).dialog( "open" );
 			}
 		return false;
 	});
