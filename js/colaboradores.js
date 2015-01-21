@@ -33,9 +33,8 @@ window.onload = function(){
 
 		if (isNegativo(saldoFinal)){
 
-				$(function() {
-					$( "dialogoHoraNegativa" ).dialog();
-				});
+				alert("Não é possível realizar o pagamento, devido as horas serem negativas!");
+				
 		}else{
 
 			atualizaDadosPorColaborador(arrayFormulario.idColaborador, dataSemDia(arrayFormulario.data),
@@ -136,10 +135,10 @@ window.onload = function(){
 
 	} // Fim function inserirHorasTrabalhadasPorColaborador
 
-	/*inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-01", "03:15", "00:00");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-02", "09:19", "09:30");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-03", "01:10", "01:00");
-	inserirHorasTrabalhadasPorColaborador("-JctJMFQ_CsJEzqRpYHB", "2014-04", "00:01", "00:00");*/
+	/*inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-01", "03:15", "00:00");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-02", "-09:19", "09:30");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-03", "-01:10", "01:00");
+	inserirHorasTrabalhadasPorColaborador("-JgBZQz3WnNn5xe4GJoU", "2014-04", "-00:01", "00:00");*/
 	
 	/*Chamadas para inserir o funcionario.
 	inserirColaborador("Fernando", "2012-03-03", "12:32");
@@ -434,7 +433,7 @@ window.onload = function(){
 		var workTime;
 		var setMes = "";
 		var setAno = "";
-		var minAno = "1500";
+		var minAno = "2500";
 		var minMes = "13";
 		var menorMes="";
 		var saldoAnterior = "";		
