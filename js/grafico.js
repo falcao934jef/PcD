@@ -48,7 +48,7 @@ window.onload = function(){
 			});//Fim each
 
 	  		//Recuperar o Saldo e colocar no grafico
-	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].total;	
+	  		colecao[i][dataAtual.getUTCMonth()] = worktime[w].total; 	
 
 	  		//Gerando o grafico
 	  		gerarGrafico(arrayColaboradores);

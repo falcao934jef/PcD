@@ -102,7 +102,7 @@ window.onload = function(){
 	function inserirColaborador(nome, data, saldo){
 
 		// Recebe os dados da data e o saldo de horas
-		var newWorkTime = {"date": data, "balance": saldo};
+		var newWorkTime = {"date": data, "balance": saldo };
 
 		/*
 		* Dados push armazena dados no Firebase
