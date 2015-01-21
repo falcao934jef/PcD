@@ -33,8 +33,9 @@ window.onload = function(){
 
 		if (isNegativo(saldoFinal)){
 
-			alert("Não é possível realizar o pagamento, devido as horas ser negativas!");
-			event.preventDefault();
+				$(function() {
+					$( "dialogoHoraNegativa" ).dialog();
+				});
 		}else{
 
 			atualizaDadosPorColaborador(arrayFormulario.idColaborador, dataSemDia(arrayFormulario.data),
